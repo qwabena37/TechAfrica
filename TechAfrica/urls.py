@@ -26,7 +26,8 @@ schema_view = get_schema_view(
     openapi.Info(
         title="TechAfrica API",
         default_version='v1',
-        description="TechAfrica Backend API Documentation",
+        description="TechAfrica platform API documentation",
+        terms_of_service="https://www.techafrica.com/terms/",
         contact=openapi.Contact(email="support@techafrica.com"),
         license=openapi.License(name="MIT License"),
     ),
@@ -41,11 +42,24 @@ urlpatterns = [
     path('api/accounts/', include('accounts.urls')),
     path('api/issues/', include('issues.urls')),
     path('api/solutions/', include('solutions.urls')),
-    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0),
-         name='schema-swagger-ui'),
+      # Swagger as homepage
+    path(
+        '',
+        schema_view.with_ui('swagger', cache_timeout=0),
+        name='swagger-home',
+    ),
 
-    path('redoc/', schema_view.with_ui('redoc', cache_timeout=0),
-         name='schema-redoc'),
+    # Swagger formats
+    path(
+        'swagger/',
+        schema_view.with_ui('swagger', cache_timeout=0),
+        name='schema-swagger-ui',
+    ),
+    path(
+        'redoc/',
+        schema_view.with_ui('redoc', cache_timeout=0),
+        name='schema-redoc',
+    ),
 
 ]
 

@@ -47,7 +47,6 @@ INSTALLED_APPS = [
     'comments',
     'tips',
     "corsheaders",
-
 ]
 
 AUTH_USER_MODEL = 'accounts.User'
@@ -69,7 +68,7 @@ REST_FRAMEWORK = {
 }
 
 MIDDLEWARE = [
-    "corsheaders.middleware.CorsMiddleware"
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.security.SecurityMiddleware',
     "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',

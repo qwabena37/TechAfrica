@@ -14,3 +14,10 @@ class User(AbstractUser):
 @property
 def is_expert(self):
     return self.role == 'expert'
+
+
+class ExpertProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    skills = models.TextField()
+    verified = models.BooleanField(default=False)
+    badge = models.CharField(max_length=50, default='Tech Expert')
